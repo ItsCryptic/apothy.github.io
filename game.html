@@ -96,6 +96,8 @@ var gameRun;
 var Paddle1Y;
 var score;
 var Paddle2Y;
+var audio = new Audio();
+audio.src = "GameBeat.mp3";
 NewGFame();
 
 function stopGame() {
@@ -160,7 +162,7 @@ function NewGFame() {
   Paddle1Y = 100;
   Paddle2Y = y;
   score = 0;
-
+  audio.play();
 }
 
 function drawScfore() {
