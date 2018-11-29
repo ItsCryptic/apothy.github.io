@@ -7,7 +7,7 @@
     <header>
       <center>Ping Pong Game</center>
     </header>
-    <title>Ping Pong Game v1.4</title>
+    <title>Ping Pong Game v1.5</title>
   </head>
   <link rel="icon" type="img/png" href="img/favicon.png">
   <nav>
@@ -116,7 +116,7 @@ function stopGame() {
   ctx.textAlign = 'center';
   ctx.fillText('There was an attempt...',
   canvas.width / 2, canvas.height / 2);
-  audio.pause()
+  audio.stop()
 }
 
 document.getElementById("StopGFame").onclick = function() {
