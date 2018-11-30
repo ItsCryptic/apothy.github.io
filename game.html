@@ -91,7 +91,8 @@ title {
 </style>
 
 
-<script>//Variables
+<script>
+//Variables
 var canvas = document.getElementById("peanutbutter");
 var ctx = canvas.getContext("2d");
 var changeY;
@@ -103,7 +104,20 @@ var Paddle1Y;
 var score;
 var Paddle2Y;
 NewGFame();
-
+  
+function gameWin() {
+  ctx.clearRect(0, 0, 500, 400);
+  gameRun = false;
+  clearInterval();
+  //Show final score
+  ctx.fillStyle = '#7f4bc8';
+  ctx.fillRect(0, 0, 500, 400);
+  ctx.fillStyle = '#000000';
+  ctx.font = '24px Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText('You have won',
+  	canvas.width / 2, canvas.height / 2);
+}
 function stopGame() {
   ctx.clearRect(0, 0, 500, 400);
   gameRun = false;
@@ -230,7 +244,7 @@ function draw() {
       x = x + changeX;
     }
     if (score == 10) {
-      stopGame();
+      gameWin();
     }
   }
 }
