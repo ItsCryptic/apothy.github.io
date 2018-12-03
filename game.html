@@ -131,7 +131,7 @@ function stopGame() {
   ctx.textAlign = 'center';
   ctx.fillText('There was an attempt...',
   canvas.width / 2, canvas.height / 2);
-  audio.stop();
+  audio.pause();
 }
 
 document.getElementById("StopGFame").onclick = function() {
