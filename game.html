@@ -7,7 +7,7 @@
     <header>
       <center>Ping Pong Game</center>
     </header>
-    <title>Ping Pong Game v1.8</title>
+    <title>Ping Pong Game v1.9</title>
   </head>
   <link rel="icon" type="img/png" href="img/favicon.png">
   <nav>
@@ -116,7 +116,7 @@ function gameWin() {
   ctx.fillStyle = '#000000';
   ctx.font = '24px Arial';
   ctx.textAlign = 'center';
-  ctx.fillText('You have won',
+  ctx.fillText('You have won!',
   	canvas.width / 2, canvas.height / 2);
 }
 function stopGame() {
@@ -129,7 +129,7 @@ function stopGame() {
   ctx.fillStyle = '#000000';
   ctx.font = '24px Arial';
   ctx.textAlign = 'center';
-  ctx.fillText('There was an attempt...',
+  ctx.fillText('You have lost, try again.',
   canvas.width / 2, canvas.height / 2);
   audio.pause();
 }
