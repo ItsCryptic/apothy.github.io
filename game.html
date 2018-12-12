@@ -118,11 +118,11 @@ function gameWin() {
   ctx.textAlign = 'center';
   ctx.fillText('You have won!',
   	canvas.width / 2, canvas.height / 2);
-  var person = prompt("Please enter your username.", "");
-  alert("Your username is " + person);
-  if !(person == "") {
-    leaderboard[person] = score;
-    }
+  //var person = prompt("Please enter your username.", "");
+  //alert("Your username is " + person);
+  //if !(person == "") {
+    //leaderboard[person] = score;
+    //}
   
   }
 function stopGame() {
@@ -250,7 +250,7 @@ function draw() {
       y = y + changeY;
       x = x + changeX;
     }
-    if (score == 1) {
+    if (score == 10) {
       gameWin();
     }
   }
