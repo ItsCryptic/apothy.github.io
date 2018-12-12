@@ -7,7 +7,7 @@
     <header>
       <center>Ping Pong Game</center>
     </header>
-    <title>Ping Pong Game v1.9</title>
+    <title>Ping Pong Game v2.0</title>
   </head>
   <link rel="icon" type="img/png" href="img/favicon.png">
   <nav>
@@ -118,6 +118,9 @@ function gameWin() {
   ctx.textAlign = 'center';
   ctx.fillText('You have won!',
   	canvas.width / 2, canvas.height / 2);
+  var person = prompt("Please enter your username.", "Invalid Username");
+  alert("Your username is " + person);
+  
 }
 function stopGame() {
   ctx.clearRect(0, 0, 500, 400);
