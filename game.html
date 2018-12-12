@@ -104,8 +104,8 @@ var Paddle1Y;
 var score;
 var Paddle2Y;
 var audio;
+var leaderboard = {};
 NewGFame();
-  
 function gameWin() {
   ctx.clearRect(0, 0, 500, 400);
   gameRun = false;
@@ -118,10 +118,13 @@ function gameWin() {
   ctx.textAlign = 'center';
   ctx.fillText('You have won!',
   	canvas.width / 2, canvas.height / 2);
-  var person = prompt("Please enter your username.", "Invalid Username");
+  var person = prompt("Please enter your username.", "");
   alert("Your username is " + person);
+  if !(person == "") {
+    leaderboard[person] = score;
+    }
   
-}
+  }
 function stopGame() {
   ctx.clearRect(0, 0, 500, 400);
   gameRun = false;
