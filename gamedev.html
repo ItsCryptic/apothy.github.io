@@ -113,7 +113,7 @@ function gameWin() {
   	canvas.width / 2, canvas.height / 2);
   var person = prompt("Please enter your username.", "");
   alert("Your username is " + person);
-  if !(person == "") {
+  if not (person == "") {
     leaderboard[person] = score;
     }
  if (typeof localStorage == 'undefined') {
