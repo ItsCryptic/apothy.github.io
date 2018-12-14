@@ -96,7 +96,8 @@ var Paddle1Y;
 var score;
 var Paddle2Y;
 var audio;
-//var leaderboard = {};
+var leaderboard = {};
+var isStorage;
 NewGFame();
 function gameWin() {
   ctx.clearRect(0, 0, 500, 400);
@@ -110,13 +111,19 @@ function gameWin() {
   ctx.textAlign = 'center';
   ctx.fillText('You have won!',
   	canvas.width / 2, canvas.height / 2);
-  //var person = prompt("Please enter your username.", "");
-  //alert("Your username is " + person);
-  //if !(person == "") {
-    //leaderboard[person] = score;
-    //}
-  
+  var person = prompt("Please enter your username.", "");
+  alert("Your username is " + person);
+  if !(person == "") {
+    leaderboard[person] = score;
+    }
+ if (typeof localStorage == 'undefined') {
+   isStorage = false;
+ }
+  else {
+    isStorage = true;
   }
+  
+  console.log("storage " + isStorage)
 function stopGame() {
   ctx.clearRect(0, 0, 500, 400);
   gameRun = false;
@@ -228,7 +235,7 @@ function draw() {
       y = y + changeY;
       x = x + changeX;
     }
-    if (score == 10) {
+    if (score == 1) {
       gameWin();
     }
   }
