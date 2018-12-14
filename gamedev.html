@@ -7,7 +7,7 @@
     <header>
       <center>Ping Pong Game</center>
     </header>
-    <title>Ping Pong Game v2.1A</title>
+    <title>Ping Pong Game v1.9.1A</title>
   </head>
   <link rel="icon" type="img/png" href="img/favicon.png">
   <nav>
@@ -35,21 +35,26 @@
   color: black;
   background-color: #7f4bc8;
 }
+
 #StopGFame {
   color: black;
   background-color: #7f4bc8;
 }
+
 #peanutbutter {
   /*background-color: #c2aaff;*/
   background-image: linear-gradient(-90deg, red, yellow, cyan, black, purple, blue, green, orange, magenta, brown);
 }
+
 .body {
   text-align: inline-block;
 }
+
 nav {
   color: pink;
   background-color: black;
 }
+
 a {
   color: black;
   text-decoration: none;
@@ -58,17 +63,20 @@ a {
   font-size: 30px;
   margin: 1px
 }
+
 header {
   text-align: center;
   text-decoration: none;
   font-weight: bold;
   font-size: 30px;
 }
+
 title {
   text-decoration: none;
   font-weight: bold;
   text-align: center;
 }
+
 #contact {
   text-align: center;
   text-decoration: none;
@@ -96,8 +104,8 @@ var Paddle1Y;
 var score;
 var Paddle2Y;
 var audio;
+var useless;
 //var leaderboard = {};
-//var isStorage;
 NewGFame();
 function gameWin() {
   ctx.clearRect(0, 0, 500, 400);
@@ -113,16 +121,11 @@ function gameWin() {
   	canvas.width / 2, canvas.height / 2);
   //var person = prompt("Please enter your username.", "");
   //alert("Your username is " + person);
-  /*if (person != "") {
-    leaderboard[person] = score;
-    }
- if (typeof localStorage == 'undefined') {
-   isStorage = false;
- }
-  else {
-    isStorage = true;
+  //if !(person == "") {
+    //leaderboard[person] = score;
+    //}
+  
   }
-  console.log("storage " + isStorage)*/
 function stopGame() {
   ctx.clearRect(0, 0, 500, 400);
   gameRun = false;
@@ -137,9 +140,11 @@ function stopGame() {
   canvas.width / 2, canvas.height / 2);
   audio.pause();
 }
+
 document.getElementById("StopGFame").onclick = function() {
   stopGame();
 }
+
 function drawPaddle1() {
   //Paddle 1 (Padde (The better one))
   ctx.beginPath();
@@ -148,6 +153,7 @@ function drawPaddle1() {
   ctx.fill();
   ctx.closePath();
 }
+
 function drawPaddle2() {
   //Paddle 2 (Padde)
   ctx.beginPath();
@@ -156,6 +162,7 @@ function drawPaddle2() {
   ctx.fill();
   ctx.closePath();
 }
+
 function drawBalls() {
   //Balls
   ctx.beginPath();
@@ -165,11 +172,14 @@ function drawBalls() {
   ctx.fill();
   ctx.closePath();
 }
+
 //Buttons/Game setup stuff
 document.getElementById("NewGFame").onclick = function() {
   NewGFame();
 }
+
 document.addEventListener("keydown", keyDownHandler, false);
+
 function NewGFame() {
   changeY = Math.random()* 3 + 1;
   changeX = Math.random()* 3  + 1;
@@ -183,11 +193,13 @@ function NewGFame() {
   audio.src = "GameBeat.mp3";
   audio.play();
 }
+
 function drawScfore() {
   ctx.font = "16px Arial";
   ctx.fillStyle = "#7f4bc8";
   ctx.fillText("Score: " + score, 30, 20);
 }
+
 function keyDownHandler(ev) {
   if (Paddle1Y > 0 && ev.keyCode == 38) {
     Paddle1Y = Paddle1Y - 25;
@@ -196,13 +208,16 @@ function keyDownHandler(ev) {
     Paddle1Y = Paddle1Y + 25;
   }
 }
+
 function draw() {
+
   if (gameRun) {
     ctx.clearRect(0, 0, 500, 400);
     drawBalls();
     drawPaddle1();
     drawPaddle2();
     drawScfore();
+
     //Bounce at top
     if (y < 0) {
       y = y + 20;
@@ -224,20 +239,23 @@ function draw() {
     */
     } else if (x < 50) {
       if (Paddle1Y >= y - 75 && Paddle1Y <= y) {
+
         x = x + 20;
         changeX = -1 * changeX;
         score = score + 1;
       } else {
+
         stopGame();
       }
     } else {
       y = y + changeY;
       x = x + changeX;
     }
-    if (score == 1) {
+    if (score == 10) {
       gameWin();
     }
   }
 }
+
 setInterval(draw, 10)
 </script>
