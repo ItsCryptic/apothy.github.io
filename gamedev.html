@@ -141,7 +141,17 @@ function stopGame() {
   canvas.width / 2, canvas.height / 2);
   audio.pause();
 }
-
+  function startMenu() {
+   ctx.fillStyle = '#ff44f9';
+   ctx.fillRect(0,0, 500,400);
+   ctx.fillStyle '#000000';
+   ctx.font = '24px Arial';
+   ctx.textAlign = 'center';
+   ctx.fillText('Press Start To Begin', canvas.width / 2, cavas.height / 2);
+   gameRun = false;
+  }
+  
+  
 document.getElementById("StopGFame").onclick = function() {
   stopGame();
 }
