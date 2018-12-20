@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <header>
-      <center>Pong Game 2.0C</center>
+      <center>Pong Game 2.0D</center>
     </header>
     <title>Pong Game DEV2.0</title>
     <span>This is the development copy of the game. If there are bugs i apologize. They will be fixed for the stable release.</span>
@@ -124,7 +124,8 @@ function gameWin() {
     }
   }
   //Saving the leaderboard to loclastoragre under the naem ApothyPONG
-  localStorage.setItem('ApothyPONG',leaderboard);  
+  localStorage.setItem('ApothyPONG',leaderboard);
+  console.log(localStorage.getItem('ApothyPONG').split(',');
 function stopGame() {
   ctx.clearRect(0, 0, 500, 400);
   gameRun = false;
@@ -202,7 +203,7 @@ function NewGFame() {
    if (localStorage.getItem('ApothyPONG')) {
      leaderboard = localStorage.getItem('ApothyPONG').split(',');
    }
-   console.log(leaderboard);
+   //console.log(leaderboard);
  }
 }
 
