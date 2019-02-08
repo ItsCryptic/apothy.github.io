@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <header>
-      <center>Pong Game 2.0GHIJKLMNOPQRSTUVWXYZ</center>
+      <center>Pong Game 2.0GHIJKLMNOPQRSTUVWXYZABC</center>
     </header>
     <title>Pong Game DEV2.0</title>
     <span>This is the development copy of the game. If there are bugs i apologize. They will be fixed for the stable release.</span>
@@ -103,9 +103,41 @@ var score;
 var Paddle2Y;
 var audio;
 var useless;
-var leaderboard = {};
+var highscores = [];
 var isStorage;
 NewGFame();
+
+  
+function saveLeaderboard() {
+  if (isStorage) {
+  localStorage.setItem('apothyscores',JSON.stringify(highscores));
+    var saved = localStorage.getItem('apothyscores');
+    console.log(JSON.parse(saved))
+  }
+}
+                          
+function checkScores() {
+    //checking score
+  if (highscores.length < 3) {
+    //i like pie
+    highscores.push([username,score])
+
+  }
+  else {
+  //when length is 3 or more.
+    for (var i=0; i < highscores.length; i++) {
+      if(highscores[i][1] <= score) {
+        highscores.push([username,score]);
+        break
+      }
+    }
+  }
+  highscores.sort(function(a,b){return b[1] - a[1]})
+  highscores.pop()
+}
+  
+  
+  
 function gameWin() {
   ctx.clearRect(0, 0, 500, 400);
   gameRun = false;
@@ -124,11 +156,10 @@ function gameWin() {
   if (person != "") {
     //Adding person and score to leaderbroad
     leaderboard[person] = score;
+    checkScores();
     }
   }
-  //Saving the leaderboard to loclastoragre under the naem ApothyPONG
-  localStorage.setItem('ApothyPONG', JSON.stringify(leaderboard));
-  console.log(localStorage.getItem('ApothyPONG'));
+  
 function stopGame() {
   ctx.clearRect(0, 0, 500, 400);
   gameRun = false;
@@ -142,6 +173,7 @@ function stopGame() {
   ctx.fillText('You have lost, try again.',
   canvas.width / 2, canvas.height / 2);
   audio.pause();
+  checkScores();
 }
    
 document.getElementById("StopGFame").onclick = function() {
@@ -202,12 +234,11 @@ function NewGFame() {
     isStorage = true;
   }
   //Getting the leaderboard from loacl sorage
- if (isStorage) {
-   if (localStorage.getItem('ApothyPONG')) {
-     leaderboard = localStorage.getItem('ApothyPONG').split(',');
-   }
-   //console.log(leaderboard);
- }
+  if (isStorage) {
+    if (localStorage.getItem('apothyscores')) {
+      highscores = JSON.parse(localStorage.getItem('apothyscores'));
+    }
+  }
 }
 
 function drawScfore() {
