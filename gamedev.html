@@ -157,6 +157,7 @@ function gameWin() {
     //Adding person and score to leaderbroad
     leaderboard[person] = score;
     checkScores();
+    saveLeaderboard();
     }
   }
   
@@ -173,7 +174,6 @@ function stopGame() {
   ctx.fillText('You have lost, try again.',
   canvas.width / 2, canvas.height / 2);
   audio.pause();
-  checkScores();
 }
    
 document.getElementById("StopGFame").onclick = function() {
