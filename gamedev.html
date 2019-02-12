@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <header>
-      <center>Pong Game 2.0GHIJKLMNOPQRSTUVWXYZABC</center>
+      <center>Pong Game 2.0GHIJKLMNOPQRSTUVWXYZABCD</center>
     </header>
     <title>Pong Game DEV2.0</title>
     <span>This is the development copy of the game. If there are bugs i apologize. They will be fixed for the stable release.</span>
@@ -105,6 +105,8 @@ var audio;
 var useless;
 var highscores = [];
 var isStorage;
+var person;
+var score;
 NewGFame();
 
   
@@ -120,14 +122,14 @@ function checkScores() {
     //checking score
   if (highscores.length < 3) {
     //i like pie
-    highscores.push([username,score])
+    highscores.push([person,score])
 
   }
   else {
   //when length is 3 or more.
     for (var i=0; i < highscores.length; i++) {
       if(highscores[i][1] <= score) {
-        highscores.push([username,score]);
+        highscores.push([person,score]);
         break
       }
     }
@@ -148,14 +150,16 @@ function gameWin() {
   ctx.fillStyle = '#000000';
   ctx.font = '24px Arial';
   ctx.textAlign = 'center';
-  ctx.fillText('You have won!',
+  ctx.fillText('You have won!, No need to try again',
   	canvas.width / 2, canvas.height / 2);
+  for (var i = 0; i<highscores.length; i++) {
+   ctx.fillText(highscores[i]) 
+  }
   //Getting USERNAME
-  var person = prompt("Please enter your username.", "");
+  person = prompt("Please enter your username.", "");
   alert("Your username is " + person);
   if (person != "") {
-    //Adding person and score to leaderbroad
-    leaderboard[person] = score;
+    //Adding person and score to leaderboard
     checkScores();
     saveLeaderboard();
     }
