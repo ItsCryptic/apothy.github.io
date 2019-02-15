@@ -7,9 +7,9 @@
     <header>
       <center>Pong Game</center>
     </header>
-    <title>Pong Game v1.9.1E</title>
+    <title>Pong Game v1.9.1F</title>
   </head>
-  <span>Stable Release: 1.9.1E</span>
+  <span>Stable Release: 1.9.1F</span>
   <link rel="icon" type="img/png" href="img/favicon.png">
   <div id="body">
 
@@ -21,6 +21,9 @@
       <button id="StopGFame">Stop Game</button>
       <canvas id="peanutbutter" width="500" height="400">
       </canvas>
+      <p id="Progressbar">Leaderboard Progress</p>
+      <progress value="70" max="100"></progress>
+      <p id="progressbar2">20% more to go!</p>
     </body>
   </div>
 
@@ -93,6 +96,10 @@ title {
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;          /* Likely future */
   }
+progress {
+  margin-top: 0px;
+  background-color: red;
+}
 </style>
 <script>
 //Variables
