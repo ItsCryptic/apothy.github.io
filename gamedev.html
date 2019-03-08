@@ -5,21 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <header>
-      <center>Pong Game 2.0GHIJKLMNOPQRSTUVWXYZABCDEFGHIJK</center>
+      <center>Pong Game 2.0GHIJKLMNOPQRSTUVWXYZABCDEFGH</center>
     </header>
     <title>Pong Game DEV2.0</title>
     <span>This is the development copy of the game. If there are bugs i apologize. They will be fixed for the stable release.</span>
   </head>
- <!-- ____  _  _      _____   ____  ____  _      _____   _____ ____  _      _____  
-/  __\/ \/ \  /|/  __/  /  __\/  _ \/ \  /|/  __/  /  __//  _ \/ \__/|/  __/  
-|  \/|| || |\ ||| |  _  |  \/|| / \|| |\ ||| |  _  | |  _| / \|| |\/|||  \    
-|  __/| || | \||| |_//  |  __/| \_/|| | \||| |_//  | |_//| |-||| |  |||  /_   
-\_/   \_/\_/  \|\____\  \_/   \____/\_/  \|\____\  \____\\_/ \|\_/  \|\____\ 
--->
   <link rel="icon" type="img/png" href="img/favicon.png">
   <div id="body">
 
     <body>
+      <div id="scores"></div>
       <button id="NewGFame">New Game</button>
       <button id="StopGFame">Stop Game</button>
       <canvas id="peanutbutter" width="500" height="400">
@@ -29,291 +24,322 @@
 
 </html>
 
-<footer><a rel="license" id="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</footer>
+<footer><a rel="license" id="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a
+  <a
+    rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</footer>
 
 
 <style>
-#NewGFame {
+#scores {
+  position: relative;
+  margin-top: 0px;
+  margin-left: 200px;
+  /*opacity: 0;*/
+  /*margin-top: -50%;*/
+  transition: all 1s ease-in-out; 
+  background-color: lavender;
+  /*height: 200px;
+  width: 250px; */
   color: black;
-  background-color: #7f4bc8;
+  display: none;
 }
-
-#StopGFame {
-  color: black;
-  background-color: #7f4bc8;
-}
-
-#peanutbutter {
-  /*background-color: #c2aaff;*/
-  background-image: linear-gradient(-90deg, red, yellow, cyan, black, purple, blue, green, orange, magenta, brown);
-}
-
-.body {
-  text-align: inline-block;
-}
-
-nav {
-  color: pink;
-  background-color: black;
-}
-
-a {
-  color: black;
-  text-decoration: none;
-}
-
-header {
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 30px;
-}
-
-title {
-  text-decoration: none;
-  font-weight: bold;
-  text-align: center;
-}
-
-#contact {
-  text-align: center;
-  text-decoration: none;
-  margin: 50px;
-}
-  
-#license {
-  text-decoration: none;
-  color: black;
-  font-size: 15px;
+  #NewGFame {
+    color: black;
+    background-color: #7f4bc8;
   }
+
+  #StopGFame {
+    color: black;
+    background-color: #7f4bc8;
+  }
+
+  #peanutbutter {
+    /*background-color: #c2aaff;*/
+    background-image: linear-gradient(-90deg, red, yellow, cyan, black, purple, blue, green, orange, magenta, brown);
+  }
+
+  .body {
+    text-align: inline-block;
+  }
+
+  nav {
+    color: pink;
+    background-color: black;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  header {
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  title {
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #contact {
+    text-align: center;
+    text-decoration: none;
+    margin: 50px;
+  }
+
+  #license {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+  }
+
   span {
-   text-align: center;
+    text-align: center;
   }
+
   hover:game-button {
     box-shadow: 5px 30px;
-}
+  }
 </style>
 
 
 <script>
-//Variables
-var canvas = document.getElementById("peanutbutter");
-var ctx = canvas.getContext("2d");
-var changeY;
-var x;
-var y;
-var changeX;
-var gameRun;
-var Paddle1Y;
-var score;
-var Paddle2Y;
-var audio;
-var useless;
-var highscores = [];
-var isStorage;
-var person;
-var score;
-NewGFame();
+  //Variables
+  var canvas = document.getElementById("peanutbutter");
+  var ctx = canvas.getContext("2d");
+  var changeY;
+  var x;
+  var y;
+  var changeX;
+  var gameRun;
+  var Paddle1Y;
+  var score;
+  var Paddle2Y;
+  var audio;
+  var useless;
+  var highscores = [];
+  var isStorage;
+  var person;
+  var score;
+  NewGFame();
 
-  
-function saveLeaderboard() {
-  if (isStorage) {
-  localStorage.setItem('apothyscores',JSON.stringify(highscores));
-    var saved = localStorage.getItem('apothyscores');
-    console.log(JSON.parse(saved))
-  }
-}
-                          
-function checkScores() {
-    //checking score
-  if (highscores.length < 3) {
-    //i like pie
-    highscores.push([person,score])
-
-  }
-  else {
-  //when length is 3 or more.
-    for (var i=0; i < highscores.length; i++) {
-      if(highscores[i][1] <= score) {
-        highscores.push([person,score]);
-        break
-      }
+  function saveLeaderboard() {
+    if (isStorage) {
+      localStorage.setItem('apothyscores', JSON.stringify(highscores));
+      var saved = localStorage.getItem('apothyscores');
+      console.log(JSON.parse(saved))
     }
   }
-  highscores.sort(function(a,b){return b[1] - a[1]})
-  if (highscores.length > 10) {
-    highscores.pop()
-  }
-}
 
-function gameWin() {
-  ctx.clearRect(0, 0, 500, 400);
-  gameRun = false;
-  clearInterval();
-  //Show final score
-  ctx.fillStyle = '#7f4bc8';
-  ctx.fillRect(0, 0, 500, 400);
-  ctx.fillStyle = '#000000';
-  ctx.font = '24px Arial';
-  ctx.textAlign = 'center';
-  ctx.fillText('You have won!, No need to try again',
-  	canvas.width / 2, canvas.height / 2);
-  for (var i = 0; i<highscores.length; i++) {
-   ctx.fillText(highscores[i],
-   canvas.width / 2, canvas.height / 2);
+  function checkScores() {
+    //checking score
+    if (highscores.length < 3) {
+      //i like pie
+      highscores.push([person, score])
+    } else {
+      //when length is 3 or more.
+      for (var i = 0; i < highscores.length; i++) {
+        if (highscores[i][1] <= score) {
+          highscores.push([person, score]);
+          break
+        }
+      }
+    }
+    highscores.sort(function(a, b) {
+      return b[1] - a[1]
+    })
+    if (highscores.length > 10) {
+      highscores.pop()
+    }
   }
+function showScores() {
+	var highscorestext = ""; 
+	for (var x = 0; x < highscores.length; x++) {
+  	highscorestext = highscorestext + highscores[x] + "<br />";	
+  } 
+  //console.log(highscorestext);
+	document.getElementById("scores").innerHTML = highscorestext;
+  //document.getElementById("scores").innerHTML = "You won good job just kidding";
+}
+  function gameWin() {
+    ctx.clearRect(0, 0, 500, 400);
+    gameRun = false;
+    clearInterval();
+    //Show final score
+    /*ctx.fillStyle = '#7f4bc8';
+    ctx.fillRect(0, 0, 500, 400);
+    ctx.fillStyle = '#000000';
+    ctx.font = '24px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('You have won!, No need to try again',
+    	canvas.width / 2, canvas.height / 2);
+    for (var i = 0; i<highscores.length; i++) {
+     ctx.fillText(highscores[i],
+     canvas.width / 2, canvas.height / 2);
+     */
+    document.getElementById("peanutbutter").style.height = 0;
+    //document.getElementById("scores").innerHTML = "You won good job just kidding";
+    //document.getElementById("scores").style.margin.bottom=50;
+    //document.getElementById("scores").style.opacity=1;
+    document.getElementById("scores").style.display="block";
+    document.getElementById("scores").style.height="500px";
+    document.getElementById("scores").style.width="400px";    
   //Getting USERNAME
   person = prompt("Please enter your username.", "");
   alert("Your username is " + person);
+  
+  //  margin-top: 200px;
+  // margin-left: 250px;
   if (person != "") {
     //Adding person and score to leaderboard
     checkScores();
     saveLeaderboard();
-    }
+    showScores();
   }
-  
-function stopGame() {
-  ctx.clearRect(0, 0, 500, 400);
-  gameRun = false;
-  clearInterval();
-  //Show final score
-  ctx.fillStyle = '#7f4bc8';
-  ctx.fillRect(0, 0, 500, 400);
-  ctx.fillStyle = '#000000';
-  ctx.font = '24px Arial';
-  ctx.textAlign = 'center';
-  ctx.fillText('You have lost, try again.',
-  canvas.width / 2, canvas.height / 2);
-  audio.pause();
-}
-   
-document.getElementById("StopGFame").onclick = function() {
-  stopGame();
-}
-
-function drawPaddle1() {
-  //Paddle 1 (Padde (The better one))
-  ctx.beginPath();
-  ctx.rect(0, Paddle1Y, 25, 75);
-  ctx.fillStyle = "#7a4108";
-  ctx.fill();
-  ctx.closePath();
-}
-
-function drawPaddle2() {
-  //Paddle 2 (Padde)
-  ctx.beginPath();
-  ctx.rect(475, y, 25, 75);
-  ctx.fillStyle = "#7a4108";
-  ctx.fill();
-  ctx.closePath();
-}
-
-function drawBalls() {
-  //Balls
-  ctx.beginPath();
-  //ctx.arc(x, y, 25, 0, 360);
-  ctx.arc(x, y, 25, 0, 360);
-  ctx.fillStyle = '#0419ff';
-  ctx.fill();
-  ctx.closePath();
-}
-
-//Buttons/Game setup stuff
-document.getElementById("NewGFame").onclick = function() {
-  NewGFame();
-}
-
-document.addEventListener("keydown", keyDownHandler, false);
-
-function NewGFame() {
-  changeY = Math.random()* 3 + 1;
-  changeX = Math.random()* 3  + 1;
-  x = 250;
-  y = 25;
-  gameRun = true;
-  Paddle1Y = 100;
-  Paddle2Y = y;
-  score = 0;
-  audio = new Audio();
-  audio.src = "GameBeat.mp3";
-  audio.play();
-  if (typeof localStorage == 'undefined') {
-    isStorage = false;
-  }
-  else {
-    isStorage = true;
-  }
-  //Getting the leaderboard from loacl sorage
-  if (isStorage) {
-    if (localStorage.getItem('apothyscores')) {
-      highscores = JSON.parse(localStorage.getItem('apothyscores'));
-    }
-  }
-}
-
-function drawScfore() {
-  ctx.font = "16px Arial";
-  ctx.fillStyle = "#7f4bc8";
-  ctx.fillText("Score: " + score, 30, 20);
-}
-
-function keyDownHandler(ev) {
-  if (Paddle1Y > 0 && ev.keyCode == 38) {
-    Paddle1Y = Paddle1Y - 25;
-  }
-  if (Paddle1Y < 325 && ev.keyCode == 40) {
-    Paddle1Y = Paddle1Y + 25;
-  }
-}
-
-function draw() {
-
-  if (gameRun) {
+ }
+  function stopGame() {
     ctx.clearRect(0, 0, 500, 400);
-    drawBalls();
-    drawPaddle1();
-    drawPaddle2();
-    drawScfore();
+    gameRun = false;
+    clearInterval();
+    //Show final score
+    ctx.fillStyle = '#7f4bc8';
+    ctx.fillRect(0, 0, 500, 400);
+    ctx.fillStyle = '#000000';
+    ctx.font = '24px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('You have lost, try again.',
+      canvas.width / 2, canvas.height / 2);
+    audio.pause();
+  }
 
-    //Bounce at top
-    if (y < 0) {
-      y = y + 20;
-      changeY = -1 * changeY;
-      //Bounce at bottom
-    } else if (y > canvas.height) {
-      y = y - 20;
-      changeY = -1 * changeY;
-      //Bounce at right
-    } else if (x > 450) {
-      x = x - 20;
-      changeX = -1 * changeX;
-      /*
+  document.getElementById("StopGFame").onclick = function() {
+    stopGame();
+  }
+
+  function drawPaddle1() {
+    //Paddle 1 (Padde (The better one))
+    ctx.beginPath();
+    ctx.rect(0, Paddle1Y, 25, 75);
+    ctx.fillStyle = "#7a4108";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  function drawPaddle2() {
+    //Paddle 2 (Padde)
+    ctx.beginPath();
+    ctx.rect(475, y, 25, 75);
+    ctx.fillStyle = "#7a4108";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  function drawBalls() {
+    //Balls
+    ctx.beginPath();
+    //ctx.arc(x, y, 25, 0, 360);
+    ctx.arc(x, y, 25, 0, 360);
+    ctx.fillStyle = '#0419ff';
+    ctx.fill();
+    ctx.closePath();
+  }
+  //Buttons/Game setup stuff
+  document.getElementById("NewGFame").onclick = function() {
+    NewGFame();
+  }
+  document.addEventListener("keydown", keyDownHandler, false);
+
+  function NewGFame() {
+    changeY = Math.random() * 3 + 1;
+    changeX = Math.random() * 3 + 1;
+    x = 250;
+    y = 25;
+    gameRun = true;
+    Paddle1Y = 100;
+    Paddle2Y = y;
+    score = 0;
+    audio = new Audio();
+    audio.src = "GameBeat.mp3";
+    audio.play();
+    if (typeof localStorage == 'undefined') {
+      isStorage = false;
+    } else {
+      isStorage = true;
+    }
+    //Getting the leaderboard from loacl sorage
+    if (isStorage) {
+      if (localStorage.getItem('apothyscores')) {
+        highscores = JSON.parse(localStorage.getItem('apothyscores'));
+      }
+    }
+    //setting the display to nnone from the css
+    document.getElementById("scores").style.display="none";
+    //setting the canvas back on sceen
+    document.getElementById("peanutbutter").style.height="500px";
+  }
+
+  function drawScfore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#7f4bc8";
+    ctx.fillText("Score: " + score, 30, 20);
+  }
+
+  function keyDownHandler(ev) {
+    if (Paddle1Y > 0 && ev.keyCode == 38) {
+      Paddle1Y = Paddle1Y - 25;
+    }
+    if (Paddle1Y < 325 && ev.keyCode == 40) {
+      Paddle1Y = Paddle1Y + 25;
+    }
+  }
+
+  function draw() {
+    if (gameRun) {
+      ctx.clearRect(0, 0, 500, 400);
+      drawBalls();
+      drawPaddle1();
+      drawPaddle2();
+      drawScfore();
+      //Bounce at top
+      if (y < 0) {
+        y = y + 20;
+        changeY = -1 * changeY;
+        //Bounce at bottom
+      } else if (y > canvas.height) {
+        y = y - 20;
+        changeY = -1 * changeY;
+        //Bounce at right
+      } else if (x > 450) {
+        x = x - 20;
+        changeX = -1 * changeX;
+        /*
     } else if (x < 50 && Paddle1Y >= y - 37.5 && Paddle1Y <= y + 37.5) {
       x = x + 20;
       changeX = 1;
       score = score + 1;
     } 
     */
-    } else if (x < 50) {
-      if (Paddle1Y >= y - 75 && Paddle1Y <= y) {
-
-        x = x + 20;
-        changeX = -1 * changeX;
-        score = score + 1;
+      } else if (x < 50) {
+        if (Paddle1Y >= y - 75 && Paddle1Y <= y) {
+          x = x + 20;
+          changeX = -1 * changeX;
+          score = score + 1;
+        } else {
+          stopGame();
+        }
       } else {
-
-        stopGame();
+        y = y + changeY;
+        x = x + changeX;
       }
-    } else {
-      y = y + changeY;
-      x = x + changeX;
-    }
-    if (score == 1) {
-      gameWin();
+      if (score == 1) {
+        gameWin();
+      }
     }
   }
-}
+  setInterval(draw, 10)
 
-setInterval(draw, 10)
 </script>
