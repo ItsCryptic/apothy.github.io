@@ -1,0 +1,136 @@
+/*Keyframes*/
+@keyframes beat{
+	to { transform: scale(1.4); }
+}
+/*Imports*/
+@import url('https://fonts.googleapis.com/css?family=Margarine');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+/*CSS*/
+.head {
+  font-weight: bold;
+  display: block;
+  background-color: black;
+  color: white;
+  position: relative;
+  text-align: center;
+  padding: none;
+  font-size: 15;
+  font-family: 'Open Sans', sans-serif;
+  animation: beat 1s infinite alternate;
+  font-style: italic;
+
+}
+
+.footer {
+   margin-top: 100%;
+   display: block;
+   position: relative;
+   color: white;
+   text-align: center;
+   background-color: black;
+   font-family: 'Open Sans', sans-serif;
+}
+
+.no-outline {
+  position: relative;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#development {
+  margin-left: 50%;
+}
+
+#spacing {
+  margin-left: 50%;
+}
+
+#links {
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#aboutus {
+  margin-left: 0%;
+  position: absolute;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#footer-text {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Margarine', cursive;
+}
+
+#header {
+  font-size: 30px;
+  font-family: 'Margarine', cursive;
+}
+
+body {
+  color: white;
+  background-color: black;
+  font-family: 'Open Sans', sans-serif;
+}
+#game {
+  position: absolute;
+  margin-bottom: 50%;
+  font-family: 'Open Sans', sans-serif;
+}
+#peanutbutter {
+  /*background-color: #c2aaff;*/
+  background-image: linear-gradient(-90deg, red, yellow, cyan, black, purple, blue, green, orange, magenta, brown);
+  margin-top: 50%;
+}
+
+#NewGFame {
+  color: black;
+  background-color: #7f4bc8;
+  font-family: 'Open Sans', sans-serif;
+}
+#StopGFame {
+  color: black;
+  background-color: #7f4bc8;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#release {
+  color: white;
+  background-color: black;
+  font-weight: bold;
+  margin-top: 50%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#about-us {
+  margin-left: 0%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#final-release {
+  font-weight: bold;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#button {
+  margin-left: 50%;
+  margin-top: 5%;
+  border: 6px white;;
+  color: white;
+  background-color: black;
+}
+
+#button :hover {
+  box-shadow: 1px 10px 10px 1px white;
+}
+
+.text {
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  margin-left: 45%;
+}
