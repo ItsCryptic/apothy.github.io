@@ -1,101 +1,44 @@
-<!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <header>
-      <center>Pong Game</center>
-    </header>
-    <title>Pong Game v1.9.1D</title>
-  </head>
-  <span>Stable Release: 1.9.1D</span>
-  <link rel="icon" type="img/png" href="img/favicon.png">
-  <div id="body">
+<head>
+	<div id="head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Ping Pong Game</title>
+		<center>
+			<header id="header" class="head">Ping Pong Game</header>
+		</center>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <button id="button" onclick="document.location='#peanutbutter';return false">︾</button>
+</div>
+</head>
 
-    <body>
-      <div id="dev">
-        <button id="dev" onClick = "window.location.href='gamedev.html'">Game Dev Copy</button>
-      </div>
-      <button id="NewGFame">New Game</button>
-      <button id="StopGFame">Stop Game</button>
-      <canvas id="peanutbutter" width="500" height="400">
-      </canvas>
-    </body>
+<body>
+  <div id="game" height="500" width="500">
+    <span id="release">Release: 1.6.9</span>
+    <button id="NewGFame">New Game</button>
+    <button id="StopGFame">Stop Game</button>
+    <canvas id="peanutbutter" height="400" width="500"></canvas>
+    <div id="about">
+      <br />
+      <br />
+      <span id="about-us">This is my last project with my Computer Science teacher at my Middle School. I have learnt alot from making this!</span>
+      <br />
+      <span id="about-us">I look forward to making more games in the future!</span>
+      <br />
+      <span id="final-release">This is the final release of the game. If other developers want to pick this project up you may!</span>
+    </div>
   </div>
-
+  <div class="divs">
+    <p id="hm" hidden>Hm Mysterious on how you found this?</p>
+    <span id=""></span>
+  </div>
+</body>
+<footer class="footer"><span id="footer-text">Ping Pong Game</span> <br /> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />This work is licensed under a <a class="no-outline" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a> <br /> <br/> <span id="links"> Links </span> <br /> <a class="no-outline" href="https://apothy.github.io/">Home</a> <a id="spacing" class="no-outline" href="https://apothy.github.io/nope.html">Development Version</a> <br /> <br /> <a class="no-outline" href="https://apothy.github.io/about">About Us</a><br /> <a class="no-outline" id="spacing" href="#" hidden>You are funny duck</a></footer>
 </html>
 
-<footer><a rel="license" id="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</footer>
 
-
-<style>
-#NewGFame {
-  color: black;
-  background-color: #7f4bc8;
-}
-
-#StopGFame {
-  color: black;
-  background-color: #7f4bc8;
-}
-
-#peanutbutter {
-  /*background-color: #c2aaff;*/
-  background-image: linear-gradient(-90deg, red, yellow, cyan, black, purple, blue, green, orange, magenta, brown);
-}
-
-.body {
-  text-align: inline-block;
-}
-
-nav {
-  color: pink;
-  background-color: black;
-}
-
-a {
-  color: black;
-  text-decoration: none;
-}
-
-header {
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 30px;
-}
-
-title {
-  text-decoration: none;
-  font-weight: bold;
-  text-align: center;
-}
-
-#contact {
-  text-align: center;
-  text-decoration: none;
-  margin: 50px;
-}
-  
-#license {
-  text-decoration: none;
-  color: black;
-  font-size: 15px;
-  }
-  span { 
-   text-align: center;
-  }
-  #dev {
-    pointer-events: none;
-    -webkit-user-select: none;  /* Chrome all / Safari all */
-    -moz-user-select: none;     /* Firefox all */
-    -ms-user-select: none;      /* IE 10+ */
-    user-select: none;          /* Likely future */
-  }
-</style>
 <script>
-//Variables
 var canvas = document.getElementById("peanutbutter");
 var ctx = canvas.getContext("2d");
 var changeY;
@@ -119,7 +62,7 @@ function gameWin() {
   ctx.fillStyle = '#000000';
   ctx.font = '24px Arial';
   ctx.textAlign = 'center';
-  ctx.fillText('You have won!',
+  ctx.fillText('Wow, I can not believe you won! Guess thats a first.',
   	canvas.width / 2, canvas.height / 2);
   //var person = prompt("Please enter your username.", "");
   //alert("Your username is " + person);
@@ -128,6 +71,15 @@ function gameWin() {
     //}
   
   }
+//Prevent Default Scrolling With Arrow Keys!
+//Note: This is to prevent you scrolling down the page when playing the game!
+//Note: Please keep this here.
+window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
 function stopGame() {
   ctx.clearRect(0, 0, 500, 400);
   gameRun = false;
@@ -138,14 +90,13 @@ function stopGame() {
   ctx.fillStyle = '#000000';
   ctx.font = '24px Arial';
   ctx.textAlign = 'center';
-  ctx.fillText('You have lost, try again.',
+  ctx.fillText('Game Over!',
   canvas.width / 2, canvas.height / 2);
   audio.pause();
 }
 document.getElementById("StopGFame").onclick = function() {
   stopGame();
 }
-
 function drawPaddle1() {
   //Paddle 1 (Padde (The better one))
   ctx.beginPath();
@@ -154,7 +105,6 @@ function drawPaddle1() {
   ctx.fill();
   ctx.closePath();
 }
-
 function drawPaddle2() {
   //Paddle 2 (Padde)
   ctx.beginPath();
@@ -163,7 +113,6 @@ function drawPaddle2() {
   ctx.fill();
   ctx.closePath();
 }
-
 function drawBalls() {
   //Balls
   ctx.beginPath();
@@ -173,14 +122,11 @@ function drawBalls() {
   ctx.fill();
   ctx.closePath();
 }
-
 //Buttons/Game setup stuff
 document.getElementById("NewGFame").onclick = function() {
   NewGFame();
 }
-
 document.addEventListener("keydown", keyDownHandler, false);
-
 function NewGFame() {
   changeY = Math.random()* 3 + 1;
   changeX = Math.random()* 3  + 1;
@@ -194,13 +140,11 @@ function NewGFame() {
   audio.src = "GameBeat.mp3";
   audio.play();
 }
-
 function drawScfore() {
   ctx.font = "16px Arial";
   ctx.fillStyle = "#7f4bc8";
   ctx.fillText("Score: " + score, 30, 20);
 }
-
 function keyDownHandler(ev) {
   if (Paddle1Y > 0 && ev.keyCode == 38) {
     Paddle1Y = Paddle1Y - 25;
@@ -209,16 +153,13 @@ function keyDownHandler(ev) {
     Paddle1Y = Paddle1Y + 25;
   }
 }
-
 function draw() {
-
   if (gameRun) {
     ctx.clearRect(0, 0, 500, 400);
     drawBalls();
     drawPaddle1();
     drawPaddle2();
     drawScfore();
-
     //Bounce at top
     if (y < 0) {
       y = y + 20;
@@ -240,12 +181,10 @@ function draw() {
     */
     } else if (x < 50) {
       if (Paddle1Y >= y - 75 && Paddle1Y <= y) {
-
         x = x + 20;
         changeX = -1 * changeX;
         score = score + 1;
       } else {
-
         stopGame();
       }
     } else {
@@ -257,6 +196,5 @@ function draw() {
     }
   }
 }
-
-setInterval(draw, 10)
+setInterval(draw, 10);
 </script>
