@@ -1,11 +1,13 @@
 <html>
 
 <head>
-  <div id="head">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ping Pong Game</title>
-  <center><header id="header" class="head">Ping Pong Game</header></center>
+	<div id="head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Ping Pong Game</title>
+		<center>
+			<header id="header" class="head">Ping Pong Game</header>
+		</center>
   <link rel="stylesheet" type="text/css" href="style.css">
   <button id="button" onclick="document.location='#peanutbutter';return false">︾</button>
 </div>
@@ -48,8 +50,11 @@ var Paddle1Y;
 var score;
 var Paddle2Y;
 var audio;
+//Do not touch the token if touched game will break for you.
+var token = ";y#/qBMx,(9}hgK?";
 //var leaderboard = {};
 NewGFame();
+
 function gameWin() {
   ctx.clearRect(0, 0, 500, 400);
   gameRun = false;
@@ -153,44 +158,49 @@ function keyDownHandler(ev) {
 }
 function draw() {
   if (gameRun) {
-    ctx.clearRect(0, 0, 500, 400);
-    drawBalls();
-    drawPaddle1();
-    drawPaddle2();
-    drawScfore();
-    //Bounce at top
-    if (y < 0) {
-      y = y + 20;
-      changeY = -1 * changeY;
-      //Bounce at bottom
-    } else if (y > canvas.height) {
-      y = y - 20;
-      changeY = -1 * changeY;
-      //Bounce at right
-    } else if (x > 450) {
-      x = x - 20;
-      changeX = -1 * changeX;
-      /*
-    } else if (x < 50 && Paddle1Y >= y - 37.5 && Paddle1Y <= y + 37.5) {
-      x = x + 20;
-      changeX = 1;
-      score = score + 1;
-    } 
-    */
-    } else if (x < 50) {
-      if (Paddle1Y >= y - 75 && Paddle1Y <= y) {
-        x = x + 20;
+    if (token == ";y#/qBMx,(9}hgK?") {
+
+
+
+      ctx.clearRect(0, 0, 500, 400);
+      drawBalls();
+      drawPaddle1();
+      drawPaddle2();
+      drawScfore();
+      //Bounce at top
+      if (y < 0) {
+        y = y + 20;
+        changeY = -1 * changeY;
+        //Bounce at bottom
+      } else if (y > canvas.height) {
+        y = y - 20;
+        changeY = -1 * changeY;
+        //Bounce at right
+      } else if (x > 450) {
+        x = x - 20;
         changeX = -1 * changeX;
+        /*
+      } else if (x < 50 && Paddle1Y >= y - 37.5 && Paddle1Y <= y + 37.5) {
+        x = x + 20;
+        changeX = 1;
         score = score + 1;
+      } 
+      */
+      } else if (x < 50) {
+        if (Paddle1Y >= y - 75 && Paddle1Y <= y) {
+          x = x + 20;
+          changeX = -1 * changeX;
+          score = score + 1;
+        } else {
+          stopGame();
+        }
       } else {
-        stopGame();
+        y = y + changeY;
+        x = x + changeX;
       }
-    } else {
-      y = y + changeY;
-      x = x + changeX;
-    }
-    if (score == 10) {
-      gameWin();
+      if (score == 10) {
+        gameWin();
+      }
     }
   }
 }
