@@ -1,13 +1,15 @@
 <html>
 
 <head>
-<div id="head">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ping Pong Game</title>
-<center><header id="header" class="head">Ping Pong Game</header></center>
-<link rel="stylesheet" type="text/css" href="style.css">
-<button id="button" onclick="document.location='#peanutbutter';return false">︾</button>
+	<div id="head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Ping Pong Game</title>
+		<center>
+			<header id="header" class="head">Ping Pong Game</header>
+		</center>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <button id="button" onclick="document.location='#peanutbutter';return false">︾</button>
 </div>
 </head>
 
@@ -49,7 +51,7 @@ var score;
 var Paddle2Y;
 var audio;
 //Do not touch the token if touched game will break for you.
-var token = ";y#/qBMx,(9}hgK?";
+var token = "";
 //var leaderboard = {};
 NewGFame();
 
@@ -137,9 +139,6 @@ function NewGFame() {
   Paddle1Y = 100;
   Paddle2Y = y;
   score = 0;
-  audio = new Audio();
-  audio.src = "GameBeat.mp3";
-  audio.play();
 }
 function drawScfore() {
   ctx.font = "16px Arial";
@@ -156,7 +155,16 @@ function keyDownHandler(ev) {
 }
 function draw() {
   if (gameRun) {
-    if (token == ";y#/qBMx,(9}hgK?") {
+    if (token != ";y#/qBMx,(9}hgK?") {
+       ctx.fillStyle = '#7f4bc8';
+       ctx.fillRect(0, 0, 500, 400);
+       ctx.fillStyle = '#000000';
+       ctx.font = '24px Arial';
+       ctx.textAlign = 'center';
+       ctx.fillText('Sorry! Servers are down.',
+       canvas.width / 2, canvas.height / 2);
+    }
+    else {
 
 
 
@@ -201,6 +209,9 @@ function draw() {
       }
     }
   }
+  audio = new Audio();
+  audio.src = "GameBeat.mp3";
+  audio.play()
 }
 setInterval(draw, 10);
 </script>
